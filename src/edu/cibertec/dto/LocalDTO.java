@@ -2,6 +2,9 @@ package edu.cibertec.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -9,7 +12,8 @@ import javax.persistence.Table;
 public class LocalDTO {
 	@Id
 	private int id;
-	private int admin_id;
+	@ManyToOne
+	private AccountDTO admin;
 	private String address;
 	private String description;
 	private double latitude;
@@ -17,17 +21,18 @@ public class LocalDTO {
 	private String created_at;
 	private String updated_at;
 	private String deleted_at;
+	private int status;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getAdmin_id() {
-		return admin_id;
+	public AccountDTO getAdmin() {
+		return admin;
 	}
-	public void setAdmin_id(int admin_id) {
-		this.admin_id = admin_id;
+	public void setAdmin(AccountDTO admin) {
+		this.admin = admin;
 	}
 	public String getAddress() {
 		return address;
@@ -70,6 +75,12 @@ public class LocalDTO {
 	}
 	public void setDeleted_at(String deleted_at) {
 		this.deleted_at = deleted_at;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	
