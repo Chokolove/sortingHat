@@ -74,4 +74,21 @@ public class ModelLocal {
 		}
 		return listadoLocal;
 	}
+	
+	public void insertarAccount(AccountDTO acc) {
+		
+		EntityManager manager = factory.createEntityManager();
+		try {
+			manager.getTransaction().begin();
+			manager.persist(acc);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			manager.getTransaction().rollback();
+			System.out.println(e.getMessage());
+		}finally{
+			manager.close();
+			factory.close();
+		}
+	}
 }
