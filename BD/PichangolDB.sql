@@ -98,7 +98,7 @@ FOREIGN KEY (local_id) REFERENCES tb_local(id)
 INSERT INTO `tb_account`(`email`, `password`, `accType`, `status`) VALUES ("asd@asd.com","facil123","1",1);
 INSERT INTO `tb_account`(`email`, `password`, `accType`, `status`) VALUES ("qwe@asd.com","facil123","2",1);
 
-INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Calle Mártir José Olaya 114","Cancha 1",-12.119978,-77.030222,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1)
+INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Calle Mártir José Olaya 114","Cancha 1",-12.119978,-77.030222,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
 INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Miraflores 15074","Cancha 2",-12.122946,-77.032856,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
 INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Av Jose Larco 770","Cancha 3",-12.125553,-77.029340,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
 
