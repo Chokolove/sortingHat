@@ -12,7 +12,6 @@ import edu.cibertec.model.ModelReview;
 public class ReviewBL {
 	ModelReview modelo = new ModelReview();
 	public List<ReviewDTO> ListaReviewIdLocal(@PathParam("p_id") int id) {
-		System.out.println("entro obtenerdatoslocalxDesc()");
 		List<ReviewDTO> listareview = new ArrayList<ReviewDTO>();
 		listareview = modelo.listarReviewXId(id);
 		return listareview;

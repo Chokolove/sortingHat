@@ -1,5 +1,6 @@
 package edu.cibertec.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,13 +15,16 @@ public class ProfileDTO {
 	@ManyToOne
 	@JoinColumn(name = "account_id")
 	private AccountDTO account;
+	@Column(name = "full_name")
 	private String fullName;
-	private String emaul;
+	private String email;
 	private int phone1;
 	private int phone2;
 	private int phone3;
 	private int dni;
+	@Column(name = "created_at")
 	private String createdAt;
+	@Column(name = "updated_at")
 	private String updatedAt;
 	private int status;
 	public int getId() {
@@ -41,11 +45,11 @@ public class ProfileDTO {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	public String getEmaul() {
-		return emaul;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmaul(String emaul) {
-		this.emaul = emaul;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getPhone1() {
 		return phone1;

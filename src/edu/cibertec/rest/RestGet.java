@@ -11,9 +11,11 @@ import javax.ws.rs.core.MediaType;
 
 import edu.cibertec.businessLogic.AccountBL;
 import edu.cibertec.businessLogic.LocalBL;
+import edu.cibertec.businessLogic.ProfileBL;
 import edu.cibertec.businessLogic.ReviewBL;
 import edu.cibertec.dto.AccountDTO;
 import edu.cibertec.dto.LocalDTO;
+import edu.cibertec.dto.ProfileDTO;
 import edu.cibertec.dto.ReviewDTO;
 import edu.cibertec.model.ModelLocal;
 
@@ -23,6 +25,7 @@ public class RestGet {
 	LocalBL localbl= new LocalBL();
 	AccountBL accountBl = new AccountBL();
 	ReviewBL revBl = new ReviewBL();
+	ProfileBL profBL = new ProfileBL();
 	//http://localhost:8080/api-rest/get/obtenerdatoslocal/
 	@GET
 	@Path("/obtenerdatoslocal")
@@ -80,6 +83,18 @@ public class RestGet {
 
 			return review;
 		}
+		
+		//http://localhost:8080/api-rest/get/obetenerProfileIdAcc/1
+				@GET
+				@Path("/obetenerProfileIdAcc/{p_id}")
+				@Produces(MediaType.APPLICATION_JSON)
+				public ProfileDTO obetenerProfileIdAcc(@PathParam("p_id") int id) {
+					System.out.println("entro obetenerProfileIdAcc()");
+					ProfileDTO profile = new ProfileDTO();
+					profile= profBL.profileIdLocal(id);
+
+					return profile;
+				}
 
 
 
