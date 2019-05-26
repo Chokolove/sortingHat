@@ -8,6 +8,8 @@
 		<!-- Entidades (Clases) -->
 		<class>edu.cibertec.dto.LocalDTO</class>
 		<class>edu.cibertec.dto.AccountDTO</class>
+		<class>edu.cibertec.dto.ProfileDTO</class>
+		<class>edu.cibertec.dto.ReviewDTO</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

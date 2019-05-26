@@ -23,8 +23,14 @@ public class AccountDTO {
 	private int accType;
 	private int status;
 	@JsonIgnore
-	@OneToMany(mappedBy="admin", cascade= CascadeType.PERSIST)
+	@OneToMany(mappedBy="admin", cascade= CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<LocalDTO> locales = new ArrayList<LocalDTO>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
+	private Collection<ProfileDTO> profiles = new ArrayList<ProfileDTO>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
+	private Collection<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
 	public int getId() {
 		return id;
 	}
@@ -61,5 +67,18 @@ public class AccountDTO {
 	public void setLocales(Collection<LocalDTO> locales) {
 		this.locales = locales;
 	}
+	public Collection<ProfileDTO> getProfiles() {
+		return profiles;
+	}
+	public void setProfiles(Collection<ProfileDTO> profiles) {
+		this.profiles = profiles;
+	}
+	public Collection<ReviewDTO> getReviews() {
+		return reviews;
+	}
+	public void setReviews(Collection<ReviewDTO> reviews) {
+		this.reviews = reviews;
+	}
+	
 	
 }

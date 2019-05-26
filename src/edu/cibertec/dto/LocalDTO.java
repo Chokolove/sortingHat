@@ -1,11 +1,17 @@
 package edu.cibertec.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="tb_local")
@@ -22,6 +28,9 @@ public class LocalDTO {
 	private String updated_at;
 	private String deleted_at;
 	private int status;
+	@JsonIgnore
+	@OneToMany(mappedBy = "local", cascade = CascadeType.PERSIST)
+	private Collection<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
 	public int getId() {
 		return id;
 	}
@@ -81,6 +90,12 @@ public class LocalDTO {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public Collection<ReviewDTO> getReviews() {
+		return reviews;
+	}
+	public void setReviews(Collection<ReviewDTO> reviews) {
+		this.reviews = reviews;
 	}
 	
 	
