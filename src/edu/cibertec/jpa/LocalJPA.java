@@ -1,11 +1,25 @@
-package edu.cibertec.dto;
+package edu.cibertec.jpa;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
-public class LocalDTO implements Serializable{
-	
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name="tb_local")
+public class LocalJPA {
+	@Id
 	private int id;
-	private AccountDTO admin;
+	@ManyToOne
+	private AccountJPA admin;
 	private String address;
 	private String description;
 	private double latitude;
@@ -14,16 +28,18 @@ public class LocalDTO implements Serializable{
 	private String updated_at;
 	private String deleted_at;
 	private int status;
+	@OneToMany(mappedBy = "local", cascade = CascadeType.PERSIST)
+	private Collection<ReviewJPA> reviews = new ArrayList<ReviewJPA>();
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public AccountDTO getAdmin() {
+	public AccountJPA getAdmin() {
 		return admin;
 	}
-	public void setAdmin(AccountDTO admin) {
+	public void setAdmin(AccountJPA admin) {
 		this.admin = admin;
 	}
 	public String getAddress() {
@@ -73,6 +89,12 @@ public class LocalDTO implements Serializable{
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public Collection<ReviewJPA> getReviews() {
+		return reviews;
+	}
+	public void setReviews(Collection<ReviewJPA> reviews) {
+		this.reviews = reviews;
 	}
 	
 	

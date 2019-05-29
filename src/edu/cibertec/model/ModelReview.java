@@ -9,16 +9,17 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import edu.cibertec.dto.ReviewDTO;
+import edu.cibertec.jpa.ReviewJPA;
 
 public class ModelReview {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("PF");
-	public List<ReviewDTO> listarReviewXId(int id){
+	public List<ReviewJPA> listarReviewXId(int id){
 		EntityManager manager = factory.createEntityManager();
-		List<ReviewDTO> listadoReview= new ArrayList<>();
-		TypedQuery<ReviewDTO> resultado=null;
+		List<ReviewJPA> listadoReview= new ArrayList<>();
+		TypedQuery<ReviewJPA> resultado=null;
 		try {
-			String hql="select z from ReviewDTO z where local.id = ?1";
-			resultado = manager.createQuery(hql,ReviewDTO.class);
+			String hql="select z from ReviewJPA z where local.id = ?1";
+			resultado = manager.createQuery(hql,ReviewJPA.class);
 			resultado.setParameter(1, id);
 			
 			listadoReview= resultado.getResultList();

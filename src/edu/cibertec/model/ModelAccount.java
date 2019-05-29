@@ -9,17 +9,18 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import edu.cibertec.dto.AccountDTO;
+import edu.cibertec.jpa.AccountJPA;
 
 public class ModelAccount {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("PF");
 	
-	public List<AccountDTO> listaAccount(){
+	public List<AccountJPA> listaAccount(){
 		EntityManager manager = factory.createEntityManager();
-		List<AccountDTO> listadoAccount= new ArrayList<>();
-		TypedQuery<AccountDTO> resultado=null;
+		List<AccountJPA> listadoAccount= new ArrayList<>();
+		TypedQuery<AccountJPA> resultado=null;
 		try {
-			String hql="select l from AccountDTO l";
-			resultado = manager.createQuery(hql,AccountDTO.class);
+			String hql="select l from AccountJPA l";
+			resultado = manager.createQuery(hql,AccountJPA.class);
 			listadoAccount= resultado.getResultList();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -30,7 +31,7 @@ public class ModelAccount {
 		}
 		return listadoAccount;
 	}
-	public void insertarAccount(AccountDTO acc) {
+	public void insertarAccount(AccountJPA acc) {
 		
 		EntityManager manager = factory.createEntityManager();
 		try {

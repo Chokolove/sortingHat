@@ -4,31 +4,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.cibertec.dto.AccountDTO;
+import edu.cibertec.jpa.AccountJPA;
 import edu.cibertec.model.ModelAccount;
 
 public class AccountBL {
 	ModelAccount modelo = new ModelAccount();
 	public List<AccountDTO> obtenerDatosAccount() {
 		System.out.println("entro obtenerDatosAccount()");
-		List<AccountDTO> listaAccount = new ArrayList<AccountDTO>();
-
+		List<AccountJPA> listaAccount = new ArrayList<AccountJPA>();
+		List<AccountDTO> listaAcc = new ArrayList<AccountDTO>();
 		listaAccount = modelo.listaAccount();
-		for (AccountDTO acc:listaAccount) {
-			System.out.println("-----");
-			System.out.println("Descripcion: "+acc.getEmail());
-			System.out.println("Status: "+acc.getStatus());
-			System.out.println("-----");
+		for (AccountJPA acc:listaAccount) {
+			AccountDTO account = new AccountDTO();
+			account.setId(acc.getId());
+			account.setEmail(acc.getEmail());
+			account.setPassword(acc.getPassword());
+			account.setAccType(acc.getAccType());
+			account.setStatus(acc.getStatus());
+			
+			System.out.println("ID:     "+account.getId());
+			System.out.println("Email:  "+account.getEmail());
+			System.out.println("Pass:   "+account.getPassword());
+			System.out.println("Type:   "+account.getAccType());
+			System.out.println("Status: "+account.getStatus());
+			System.out.println("---------------------");
+			
+			listaAcc.add(account);
 		}
 
-		return listaAccount;
+		return listaAcc;
 	}
 	public String ingresarAccount(AccountDTO acc) {
-		System.out.println("Entro en servicio Post - ingresarAccount()");
-		System.out.println("Email: "+acc.getEmail());
-		System.out.println("Status: "+acc.getStatus());
-		System.out.println("Tipo: "+acc.getAccType());
+		AccountJPA account = new AccountJPA();
 		
-		modelo.insertarAccount(acc);
+		account.setId(acc.getId());
+		account.setEmail(acc.getEmail());
+		account.setPassword(acc.getPassword());
+		account.setAccType(acc.getAccType());
+		account.setStatus(acc.getStatus());
+		
+		System.out.println("Entro en servicio Post - ingresarAccount()");
+		System.out.println("Email:  "+account.getEmail());
+		System.out.println("Pass:   "+account.getPassword());
+		System.out.println("Type:   "+account.getAccType());
+		System.out.println("Status: "+account.getStatus());
+		System.out.println("---------------------");
+		
+		modelo.insertarAccount(account);
 		
 		return "Cuenta registrada Correctamente";
 	}

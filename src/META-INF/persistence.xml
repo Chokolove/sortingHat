@@ -6,16 +6,16 @@
 		<!-- Proveedor JPA -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- Entidades (Clases) -->
-		<class>edu.cibertec.dto.LocalDTO</class>
-		<class>edu.cibertec.dto.AccountDTO</class>
-		<class>edu.cibertec.dto.ProfileDTO</class>
-		<class>edu.cibertec.dto.ReviewDTO</class>
+		<class>edu.cibertec.jpa.LocalJPA</class>
+		<class>edu.cibertec.jpa.AccountJPA</class>
+		<class>edu.cibertec.jpa.ProfileJPA</class>
+		<class>edu.cibertec.jpa.ReviewJPA</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pichangol" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.password" value="mysql" />
 			<!-- Dialecto MySql -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<!-- Para ver el log de hibernate -->

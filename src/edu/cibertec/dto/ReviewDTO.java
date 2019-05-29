@@ -1,20 +1,10 @@
 package edu.cibertec.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-@Entity
-@Table(name = "tb_review")
-public class ReviewDTO {
-	@Id
+import java.io.Serializable;
+
+public class ReviewDTO implements Serializable{
 	private int id;
-	@ManyToOne
-	@JoinColumn(name = "account_id")
 	private AccountDTO account;
-	@ManyToOne
-	@JoinColumn(name = "local_id")
 	private LocalDTO local;
 	private int stars;
 	private String commentary;

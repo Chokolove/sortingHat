@@ -1,18 +1,30 @@
-package edu.cibertec.dto;
+package edu.cibertec.jpa;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-public class ProfileDTO implements Serializable{
-	
+@Entity
+@Table(name ="tb_profile")
+public class ProfileJPA {
+	@Id
 	private int id;
-	private AccountDTO account;
+	@ManyToOne
+	@JoinColumn(name = "account_id")
+	private AccountJPA account;
+	@Column(name = "full_name")
 	private String fullName;
 	private String email;
 	private int phone1;
 	private int phone2;
 	private int phone3;
 	private int dni;
+	@Column(name = "created_at")
 	private String createdAt;
+	@Column(name = "updated_at")
 	private String updatedAt;
 	private int status;
 	public int getId() {
@@ -21,10 +33,10 @@ public class ProfileDTO implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public AccountDTO getAccount() {
+	public AccountJPA getAccount() {
 		return account;
 	}
-	public void setAccount(AccountDTO account) {
+	public void setAccount(AccountJPA account) {
 		this.account = account;
 	}
 	public String getFullName() {

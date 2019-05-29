@@ -26,6 +26,8 @@ public class RestGet {
 	AccountBL accountBl = new AccountBL();
 	ReviewBL revBl = new ReviewBL();
 	ProfileBL profBL = new ProfileBL();
+	
+	
 	//http://localhost:8080/api-rest/get/obtenerdatoslocal/
 	@GET
 	@Path("/obtenerdatoslocal")
@@ -35,24 +37,24 @@ public class RestGet {
 		List<LocalDTO> listaLocales = new ArrayList<LocalDTO>();
 
 		listaLocales = localbl.obtenerDatosLocales();
-		
+
 
 		return listaLocales;
 	}
 	//http://localhost:8080/api-rest/get/obtenerDatosAccount/
-		@GET
-		@Path("/obtenerDatosAccount")
-		@Produces(MediaType.APPLICATION_JSON)
-		public List<AccountDTO> obtenerDatosAccount() {
-			System.out.println("entro obtenerDatosAccount()");
-			List<AccountDTO> listaAccount = new ArrayList<AccountDTO>();
+	@GET
+	@Path("/obtenerDatosAccount")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<AccountDTO> obtenerDatosAccount() {
+		System.out.println("entro obtenerDatosAccount()");
+		List<AccountDTO> listaAccount = new ArrayList<AccountDTO>();
 
-			listaAccount = accountBl.obtenerDatosAccount();
+		listaAccount = accountBl.obtenerDatosAccount();
 
-			return listaAccount;
-		}
+		return listaAccount;
+	}
 
-	//http://localhost:8080/api-rest/get/obtenerdatoslocal/Berlin
+	//http://localhost:8080/api-rest/get/obtenerdatoslocal/M
 	@GET
 	@Path("/obtenerdatoslocal/{p_dir}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -72,29 +74,29 @@ public class RestGet {
 		return listaLocales;
 	}
 	//http://localhost:8080/api-rest/get/obetenerReseñasLocal/1
-		@GET
-		@Path("/obetenerReseñasLocal/{p_id}")
-		@Produces(MediaType.APPLICATION_JSON)
-		public List<ReviewDTO> obetenerRevIdLocal(@PathParam("p_id") int id) {
-			System.out.println("entro obetenerReseñasLocal()");
-			List<ReviewDTO> review = new ArrayList<ReviewDTO>();
-			
-			review = revBl.ListaReviewIdLocal(id);
+	@GET
+	@Path("/obetenerReseñasLocal/{p_id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ReviewDTO> obetenerRevIdLocal(@PathParam("p_id") int id) {
+		System.out.println("entro obetenerReseñasLocal()");
+		List<ReviewDTO> review = new ArrayList<ReviewDTO>();
 
-			return review;
-		}
-		
-		//http://localhost:8080/api-rest/get/obetenerProfileIdAcc/1
-				@GET
-				@Path("/obetenerProfileIdAcc/{p_id}")
-				@Produces(MediaType.APPLICATION_JSON)
-				public ProfileDTO obetenerProfileIdAcc(@PathParam("p_id") int id) {
-					System.out.println("entro obetenerProfileIdAcc()");
-					ProfileDTO profile = new ProfileDTO();
-					profile= profBL.profileIdLocal(id);
+		review = revBl.ListaReviewIdLocal(id);
 
-					return profile;
-				}
+		return review;
+	}
+
+	//http://localhost:8080/api-rest/get/obetenerProfileIdAcc/1
+	@GET
+	@Path("/obetenerProfileIdAcc/{p_id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ProfileDTO obetenerProfileIdAcc(@PathParam("p_id") int id) {
+		System.out.println("entro obetenerProfileIdAcc()");
+		ProfileDTO profile = new ProfileDTO();
+		profile= profBL.profileIdLocal(id);
+
+		return profile;
+	}
 
 
 

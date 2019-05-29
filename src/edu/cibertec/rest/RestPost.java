@@ -11,20 +11,20 @@ import javax.ws.rs.core.MediaType;
 
 import edu.cibertec.businessLogic.AccountBL;
 import edu.cibertec.dto.AccountDTO;
+import edu.cibertec.dto.ProfileDTO;
 import edu.cibertec.model.ModelLocal;
 
 @Path("/post")
 public class RestPost {
-	AccountBL accountBL = new AccountBL();
 	
-	//http://localhost:8080/api-rest/post/inAccount/
+	//http://localhost:8080/api-rest/post/inAccProf/
 	@POST
-	@Path("/inAccount")
+	@Path("/inAccProf")
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Produces(MediaType.APPLICATION_JSON)
-	public String ingresarAccount(AccountDTO acc) {
+	public String ingresarAccount() {
 		
-		accountBL.ingresarAccount(acc);
+		
 		
 		return "Cuenta registrada Correctamente";
 	}

@@ -12,20 +12,20 @@ import org.hibernate.Hibernate;
 
 import edu.cibertec.dto.AccountDTO;
 import edu.cibertec.dto.LocalDTO;
+import edu.cibertec.jpa.LocalJPA;
 
 public class ModelLocal {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("PF");
 	
 	
-	public List<LocalDTO> listarLocal(){
+	public List<LocalJPA> listarLocal(){
 		EntityManager manager = factory.createEntityManager();
-		List<LocalDTO> listadoLocal= new ArrayList<>();
-		TypedQuery<LocalDTO> resultado=null;
+		List<LocalJPA> listadoLocal= new ArrayList<>();
+		TypedQuery<LocalJPA> resultado=null;
 		try {
-			String hql="select distinct l from LocalDTO l";
-			resultado = manager.createQuery(hql,LocalDTO.class);
+			String hql="select distinct l from LocalJPA l";
+			resultado = manager.createQuery(hql,LocalJPA.class);
 			listadoLocal= resultado.getResultList();
-			Hibernate.initialize(resultado);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -38,14 +38,14 @@ public class ModelLocal {
 	
 	
 	
-	public List<LocalDTO> listarLocalXDir(String dir){
+	public List<LocalJPA> listarLocalXDir(String dir){
 		EntityManager manager = factory.createEntityManager();
-		List<LocalDTO> listadoLocal= new ArrayList<>();
-		TypedQuery<LocalDTO> resultado=null;
+		List<LocalJPA> listadoLocal= new ArrayList<>();
+		TypedQuery<LocalJPA> resultado=null;
 		String param = "%"+dir+"%";
 		try {
-			String hql="select z from LocalDTO z where z.address like ?1";
-			resultado = manager.createQuery(hql,LocalDTO.class);
+			String hql="select z from LocalJPA z where z.address like ?1";
+			resultado = manager.createQuery(hql,LocalJPA.class);
 			resultado.setParameter(1, param);
 			
 			listadoLocal= resultado.getResultList();
