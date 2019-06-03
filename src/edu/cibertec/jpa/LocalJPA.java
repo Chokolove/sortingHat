@@ -20,6 +20,7 @@ public class LocalJPA {
 	private int id;
 	@ManyToOne
 	private AccountJPA admin;
+	private String name;
 	private String address;
 	private String description;
 	private double latitude;
@@ -41,6 +42,13 @@ public class LocalJPA {
 	}
 	public void setAdmin(AccountJPA admin) {
 		this.admin = admin;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getAddress() {
 		return address;

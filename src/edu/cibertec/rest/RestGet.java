@@ -73,12 +73,12 @@ public class RestGet {
 
 		return listaLocales;
 	}
-	//http://localhost:8080/api-rest/get/obetenerReseñasLocal/1
+	//http://localhost:8080/api-rest/get/obetenerResenasLocal/1
 	@GET
-	@Path("/obetenerReseñasLocal/{p_id}")
+	@Path("/obetenerResenasLocal/{p_id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ReviewDTO> obetenerRevIdLocal(@PathParam("p_id") int id) {
-		System.out.println("entro obetenerReseñasLocal()");
+		System.out.println("entro obetenerResenasLocal()");
 		List<ReviewDTO> review = new ArrayList<ReviewDTO>();
 
 		review = revBl.ListaReviewIdLocal(id);

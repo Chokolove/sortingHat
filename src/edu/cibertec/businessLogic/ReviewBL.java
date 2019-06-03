@@ -55,6 +55,7 @@ public class ReviewBL {
 			account.setStatus(accJpa.getStatus());
 			
 			loc.setAdmin(account);
+			loc.setName(local.getName());
 			loc.setAddress(local.getAddress());
 			loc.setDescription(local.getDescription());
 			loc.setLatitude(local.getLatitude());

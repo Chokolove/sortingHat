@@ -36,6 +36,7 @@ FOREIGN KEY (account_id) REFERENCES tb_account(id)
 CREATE TABLE IF NOT EXISTS tb_local(
 id int auto_increment  not null,
 admin_id int not null,
+name varchar(200) not null,
 address varchar(200) not null,
 description varchar(400),
 latitude float not null,
@@ -98,9 +99,9 @@ FOREIGN KEY (local_id) REFERENCES tb_local(id)
 INSERT INTO `tb_account`(`email`, `password`, `accType`, `status`) VALUES ("asd@asd.com","facil123","1",1);
 INSERT INTO `tb_account`(`email`, `password`, `accType`, `status`) VALUES ("qwe@asd.com","facil123","2",1);
 
-INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Calle Mártir José Olaya 114","Cancha 1",-12.119978,-77.030222,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
-INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Miraflores 15074","Cancha 2",-12.122946,-77.032856,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
-INSERT INTO `tb_local`(`admin_id`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Av Jose Larco 770","Cancha 3",-12.125553,-77.029340,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
+INSERT INTO `tb_local`(`admin_id`, `name`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Cancha Martir","Calle Mártir José Olaya 114","Cancha 1",-12.119978,-77.030222,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
+INSERT INTO `tb_local`(`admin_id`, `name`, `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Cancha Miraflores","Miraflores 15074","Cancha 2",-12.122946,-77.032856,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
+INSERT INTO `tb_local`(`admin_id`, `name`,  `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (1,"Cancha Larco","Av Jose Larco 770","Cancha 3",-12.125553,-77.029340,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
 
 INSERT INTO `tb_review`(`account_id`, `local_id`, `stars`, `commentary`) VALUES (2,1,4,"Prueba texto 1");
 INSERT INTO `tb_review`(`account_id`, `local_id`, `stars`, `commentary`) VALUES (2,2,4,"Prueba texto 2");

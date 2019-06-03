@@ -32,6 +32,7 @@ public class LocalBL {
 
 			loc.setId(local.getId());
 			loc.setAdmin(account);
+			loc.setName(local.getName());
 			loc.setAddress(local.getAddress());
 			loc.setDescription(local.getDescription());
 			loc.setLatitude(local.getLatitude());
@@ -67,6 +68,7 @@ public class LocalBL {
 
 			loc.setId(local.getId());
 			loc.setAdmin(account);
+			loc.setName(local.getName());
 			loc.setAddress(local.getAddress());
 			loc.setDescription(local.getDescription());
 			loc.setLatitude(local.getLatitude());

@@ -6,6 +6,7 @@ public class LocalDTO implements Serializable{
 	
 	private int id;
 	private AccountDTO admin;
+	private String name;
 	private String address;
 	private String description;
 	private double latitude;
@@ -25,6 +26,13 @@ public class LocalDTO implements Serializable{
 	}
 	public void setAdmin(AccountDTO admin) {
 		this.admin = admin;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getAddress() {
 		return address;
