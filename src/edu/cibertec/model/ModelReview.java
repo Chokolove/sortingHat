@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import edu.cibertec.dto.ReviewDTO;
+import edu.cibertec.jpa.ProfileJPA;
 import edu.cibertec.jpa.ReviewJPA;
 
 public class ModelReview {
@@ -31,5 +32,22 @@ public class ModelReview {
 			factory.close();
 		}
 		return listadoReview;
+	}
+	
+	public void insertarReview(ReviewJPA rev) {
+
+		EntityManager manager = factory.createEntityManager();
+		try {
+			manager.getTransaction().begin();
+			manager.persist(rev);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			manager.getTransaction().rollback();
+			System.out.println(e.getMessage());
+		}finally{
+			manager.close();
+			factory.close();
+		}
 	}
 }
