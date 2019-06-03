@@ -50,6 +50,17 @@ FOREIGN KEY (admin_id) REFERENCES tb_account(id)
 );
 
 
+CREATE TABLE IF NOT EXISTS tb_day(
+id int auto_increment  not null,
+local_id int not null,
+dayn varchar(40) not null,
+begin_hour varchar(55) not null,
+end_hour varchar(55) not null,
+status char(1) not null,
+PRIMARY KEY (id),
+FOREIGN KEY (local_id) REFERENCES tb_local(id)
+);
+
 
 
 CREATE TABLE IF NOT EXISTS tb_court(
