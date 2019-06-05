@@ -31,20 +31,36 @@ public class ModelAccount {
 		}
 		return listadoAccount;
 	}
-	public void insertarAccount(AccountJPA acc) {
-		
+	public String insertarAccount(AccountJPA acc) {
+		String respuesta="";
 		EntityManager manager = factory.createEntityManager();
+		List<AccountJPA> listadoAccount= new ArrayList<>();
+		TypedQuery<AccountJPA> resultado=null;
 		try {
+			String hql="select l from AccountJPA l";
+			resultado = manager.createQuery(hql,AccountJPA.class);
+			listadoAccount= resultado.getResultList();
+			
+			for(AccountJPA jpa:listadoAccount) {
+				if(acc.getEmail().equals(jpa.getEmail())) {
+					throw new Exception("Cuenta existe");
+				}
+			}
+			
 			manager.getTransaction().begin();
 			manager.persist(acc);
 			manager.getTransaction().commit();
+			respuesta ="Cuenta creada";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			manager.getTransaction().rollback();
+			respuesta ="algo salio mal..";
 			System.out.println(e.getMessage());
 		}finally{
 			manager.close();
 			factory.close();
 		}
+		
+		return respuesta;
 	}
 }

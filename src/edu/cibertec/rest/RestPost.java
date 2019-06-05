@@ -10,6 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.json.JSONObject;
+
 import edu.cibertec.businessLogic.AccountBL;
 import edu.cibertec.businessLogic.LocalBL;
 import edu.cibertec.businessLogic.ProfileBL;
@@ -32,18 +34,12 @@ public class RestPost {
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Produces(MediaType.APPLICATION_JSON)
 
-	public String ingresarAccount(AccountDTO acc) {
+	public String ingresarAccount(AccountDTO accdto) {
 		
-		List<AccountDTO> listaAccDto = accountBl.obtenerDatosAccount();
-		String respuesta = "Falla al inciar";
-		for(AccountDTO accDto:listaAccDto) {
-			if (acc.getEmail()==accDto.getEmail()) {
-				respuesta= "Correo ya usado";
-				return respuesta;
-			}
-		}
+		String respuesta ="";
 		
-		respuesta = accountBl.ingresarAccount(acc);
+		respuesta = accountBl.ingresarAccount(accdto);
+		
 		return respuesta;
 	}
 	

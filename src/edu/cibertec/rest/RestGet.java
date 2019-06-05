@@ -18,6 +18,7 @@ import edu.cibertec.dto.LocalDTO;
 import edu.cibertec.dto.ProfileDTO;
 import edu.cibertec.dto.ReviewDTO;
 import edu.cibertec.model.ModelLocal;
+import edu.cibertec.persistence.service.IAccountService;
 
 @Path("/get")
 public class RestGet {

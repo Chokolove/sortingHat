@@ -30,9 +30,9 @@ public class AccountBL {
 		AccountJPA account = new AccountJPA();
 		
 		account = Util.accDTOtoJPA(acc);
+		String respuesta ="";
+		respuesta = modelo.insertarAccount(account);
 		
-		modelo.insertarAccount(account);
-		
-		return "Cuenta registrada Correctamente";
+		return respuesta;
 	}
 }
