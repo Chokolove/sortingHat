@@ -1,4 +1,4 @@
-package edu.cibertec.jpa;
+package edu.cibertec.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,15 +7,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "tb_review")
-public class ReviewJPA {
+public class Review {
 	@Id
 	private int id;
 	@ManyToOne
 	@JoinColumn(name = "account_id")
-	private AccountJPA account;
+	private Account account;
 	@ManyToOne
 	@JoinColumn(name = "local_id")
-	private LocalJPA local;
+	private Local local;
 	private int stars;
 	private String commentary;
 	public int getId() {
@@ -24,16 +24,16 @@ public class ReviewJPA {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public AccountJPA getAccount() {
+	public Account getAccount() {
 		return account;
 	}
-	public void setAccount(AccountJPA account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
-	public LocalJPA getLocal() {
+	public Local getLocal() {
 		return local;
 	}
-	public void setLocal(LocalJPA local) {
+	public void setLocal(Local local) {
 		this.local = local;
 	}
 	public int getStars() {

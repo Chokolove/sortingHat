@@ -1,4 +1,4 @@
-package edu.cibertec.jpa;
+package edu.cibertec.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,11 +15,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="tb_local")
-public class LocalJPA {
+public class Local {
 	@Id
 	private int id;
 	@ManyToOne
-	private AccountJPA admin;
+	@JoinColumn(name = "admin_id")
+	private Account admin;
 	private String name;
 	private String address;
 	private String description;
@@ -30,17 +31,17 @@ public class LocalJPA {
 	private String deleted_at;
 	private int status;
 	@OneToMany(mappedBy = "local", cascade = CascadeType.PERSIST)
-	private Collection<ReviewJPA> reviews = new ArrayList<ReviewJPA>();
+	private Collection<Review> reviews = new ArrayList<Review>();
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public AccountJPA getAdmin() {
+	public Account getAdmin() {
 		return admin;
 	}
-	public void setAdmin(AccountJPA admin) {
+	public void setAdmin(Account admin) {
 		this.admin = admin;
 	}
 	
@@ -98,10 +99,10 @@ public class LocalJPA {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Collection<ReviewJPA> getReviews() {
+	public Collection<Review> getReviews() {
 		return reviews;
 	}
-	public void setReviews(Collection<ReviewJPA> reviews) {
+	public void setReviews(Collection<Review> reviews) {
 		this.reviews = reviews;
 	}
 	

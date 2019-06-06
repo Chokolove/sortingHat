@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS tb_profile(
 id int auto_increment not null,
 account_id int ,
 full_name varchar(70) not null,
-email varchar(70) not null,
 phone1 varchar(9),
 phone2 varchar(9),
 phone3 varchar(9),

@@ -1,4 +1,4 @@
-package edu.cibertec.jpa;
+package edu.cibertec.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="tb_account")
-public class AccountJPA {
+public class Account {
 	@Id
 	private int id;
 	private String email;
@@ -23,11 +23,11 @@ public class AccountJPA {
 	private int accType;
 	private int status;
 	@OneToMany(mappedBy="admin", cascade= CascadeType.PERSIST)
-	private Collection<LocalJPA> locales = new ArrayList<LocalJPA>();
+	private Collection<Local> locales = new ArrayList<Local>();
 	@OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
-	private Collection<ProfileJPA> profiles = new ArrayList<ProfileJPA>();
+	private Collection<Profile> profiles = new ArrayList<Profile>();
 	@OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
-	private Collection<ReviewJPA> reviews = new ArrayList<ReviewJPA>();
+	private Collection<Review> reviews = new ArrayList<Review>();
 	public int getId() {
 		return id;
 	}
@@ -58,22 +58,22 @@ public class AccountJPA {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Collection<LocalJPA> getLocales() {
+	public Collection<Local> getLocales() {
 		return locales;
 	}
-	public void setLocales(Collection<LocalJPA> locales) {
+	public void setLocales(Collection<Local> locales) {
 		this.locales = locales;
 	}
-	public Collection<ProfileJPA> getProfiles() {
+	public Collection<Profile> getProfiles() {
 		return profiles;
 	}
-	public void setProfiles(Collection<ProfileJPA> profiles) {
+	public void setProfiles(Collection<Profile> profiles) {
 		this.profiles = profiles;
 	}
-	public Collection<ReviewJPA> getReviews() {
+	public Collection<Review> getReviews() {
 		return reviews;
 	}
-	public void setReviews(Collection<ReviewJPA> reviews) {
+	public void setReviews(Collection<Review> reviews) {
 		this.reviews = reviews;
 	}
 	

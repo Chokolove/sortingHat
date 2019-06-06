@@ -1,4 +1,4 @@
-package edu.cibertec.jpa;
+package edu.cibertec.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,15 +9,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name ="tb_profile")
-public class ProfileJPA {
+public class Profile {
 	@Id
 	private int id;
 	@ManyToOne
 	@JoinColumn(name = "account_id")
-	private AccountJPA account;
+	private Account account;
 	@Column(name = "full_name")
 	private String fullName;
-	private String email;
 	private int phone1;
 	private int phone2;
 	private int phone3;
@@ -33,10 +32,10 @@ public class ProfileJPA {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public AccountJPA getAccount() {
+	public Account getAccount() {
 		return account;
 	}
-	public void setAccount(AccountJPA account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
 	public String getFullName() {
@@ -44,12 +43,6 @@ public class ProfileJPA {
 	}
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public int getPhone1() {
 		return phone1;

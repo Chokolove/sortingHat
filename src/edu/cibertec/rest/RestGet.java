@@ -9,37 +9,54 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import edu.cibertec.businessLogic.AccountBL;
-import edu.cibertec.businessLogic.LocalBL;
-import edu.cibertec.businessLogic.ProfileBL;
-import edu.cibertec.businessLogic.ReviewBL;
+import org.apache.log4j.Logger;
+
 import edu.cibertec.dto.AccountDTO;
 import edu.cibertec.dto.LocalDTO;
 import edu.cibertec.dto.ProfileDTO;
 import edu.cibertec.dto.ReviewDTO;
+import edu.cibertec.entity.Account;
+import edu.cibertec.entity.Local;
 import edu.cibertec.model.ModelLocal;
+import edu.cibertec.persistence.service.AccountServiceImpl;
 import edu.cibertec.persistence.service.IAccountService;
+import edu.cibertec.persistence.service.LocalServiceImpl;
+import edu.cibertec.persistence.service.ProfileServiceImpl;
+import edu.cibertec.persistence.service.ReviewServiceImpl;
+import edu.cibertec.util.Util;
 
 @Path("/get")
 public class RestGet {
-
-	LocalBL localbl= new LocalBL();
-	AccountBL accountBl = new AccountBL();
-	ReviewBL revBl = new ReviewBL();
-	ProfileBL profBL = new ProfileBL();
 	
+	static final Logger log = Logger.getLogger(AccountServiceImpl.class);
+	
+	AccountServiceImpl accService = new AccountServiceImpl();
+	LocalServiceImpl locService = new LocalServiceImpl();
+	ProfileServiceImpl profService = new ProfileServiceImpl();
+	ReviewServiceImpl revService = new ReviewServiceImpl();
 	
 	//http://localhost:8080/api-rest/get/obtenerdatoslocal/
 	@GET
 	@Path("/obtenerdatoslocal")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<LocalDTO> obtenerDatosLocales() {
-		System.out.println("entro obtenerdatoslocal()");
+		log.info("Entro a obtenerDatosLocales()");
 		List<LocalDTO> listaLocales = new ArrayList<LocalDTO>();
+		List<Local> listJPA = new ArrayList<Local>();
+		
+		try {
+			listJPA = locService.getLocals();
+			for(Local jpa:listJPA) {
+				listaLocales.add(Util.localJPAtoDTO(jpa));
+			}
+		} catch (Exception e) {
+			log.error("No se pudo obtener lista");
+			e.printStackTrace();
+		}
+		
+		
 
-		listaLocales = localbl.obtenerDatosLocales();
-
-
+		log.info("Saliendo de obtenerDatosLocales()");
 		return listaLocales;
 	}
 	//http://localhost:8080/api-rest/get/obtenerDatosAccount/
@@ -47,11 +64,21 @@ public class RestGet {
 	@Path("/obtenerDatosAccount")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<AccountDTO> obtenerDatosAccount() {
-		System.out.println("entro obtenerDatosAccount()");
+		log.info("entro obtenerDatosAccount()");
 		List<AccountDTO> listaAccount = new ArrayList<AccountDTO>();
-
-		listaAccount = accountBl.obtenerDatosAccount();
-
+		List<Account> listaAccJPA = new ArrayList<Account>();
+		
+		try {
+			listaAccJPA = accService.getAccounts();
+			for(Account acc:listaAccJPA) {
+				listaAccount.add(Util.accJPAtoDTO(acc));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		log.info("Saliendo de obtenerDatosAccount()");
 		return listaAccount;
 	}
 
@@ -60,20 +87,28 @@ public class RestGet {
 	@Path("/obtenerdatoslocal/{p_dir}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<LocalDTO> obtenerDatosLocalesDescripcion(@PathParam("p_dir") String dir) {
-		System.out.println("entro obtenerdatoslocalxDesc()");
+		log.info("entro obtenerdatoslocalxDesc()");
 		List<LocalDTO> listaLocales = new ArrayList<LocalDTO>();
-
-		listaLocales = localbl.obtenerDatosLocalesDescripcion(dir);
-		for (LocalDTO local:listaLocales) {
-			System.out.println("-----");
-			System.out.println("Descripcion: "+local.getDescription());
-			System.out.println("Latitud: "+local.getLatitude());
-			System.out.println("Longitud: "+local.getLongitude());
-			System.out.println("-----");
+		List<Local> listJPA = new ArrayList<Local>();
+		
+		try {
+			listJPA = locService.getLocalxDir(dir);
+			
+			for(Local loc:listJPA) {
+				listaLocales.add(Util.localJPAtoDTO(loc));
+			}
+			log.info("Se econtro Registro");
+			return listaLocales;
+			
+		} catch (Exception e) {
+			log.error("Algo salio mal al recuperar LocalesXdir");
+			e.printStackTrace();
 		}
-
-		return listaLocales;
+		
+		log.info("salio obtenerdatoslocalxDesc()");
+		return null;
 	}
+	/*
 	//http://localhost:8080/api-rest/get/obetenerResenasLocal/1
 	@GET
 	@Path("/obetenerResenasLocal/{p_id}")
@@ -99,7 +134,7 @@ public class RestGet {
 		return profile;
 	}
 
-
+*/
 
 
 
