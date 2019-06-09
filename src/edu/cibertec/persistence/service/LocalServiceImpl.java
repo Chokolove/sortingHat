@@ -23,7 +23,7 @@ public class LocalServiceImpl implements ILocalService{
 		loc = locDAO.get(id);
 		locDAO.releaseEM();
 
-		log.info("Se ingreso a getLocal()");
+		log.info("Saliendo de getLocal()");
 		
 		return loc;
 	}
@@ -38,7 +38,7 @@ public class LocalServiceImpl implements ILocalService{
 		locals= locDAO.getAll();
 		locDAO.releaseEM();
 
-		log.info("Se sale de getLocals()");
+		log.info("Saliendo de getLocals()");
 
 		return locals;
 	}
@@ -47,20 +47,11 @@ public class LocalServiceImpl implements ILocalService{
 	public List<Local> getLocalxDir(String dir) throws Exception {
 		
 		log.info("Se ingreso a getLocalxDir()");
-		List<Local>locals= null;
 		List<Local>localReslt= new ArrayList<Local>();
 		locDAO.createEM();
-		locals= locDAO.getAll();
-		for(Local locLs:locals) {
-			log.info(locLs.getAddress().toLowerCase());
-			log.info(dir.toLowerCase());
-			if(locLs.getAddress().toLowerCase().contains(dir.toLowerCase())) {
-				log.info("Se encontro registro");
-				localReslt.add(locLs);
-			}
-			
-		}
-		log.info("Se sale de getLocalxDir()");
+		localReslt = locDAO.getXDir(dir);
+		
+		log.info("Saliendo de getLocalxDir()");
 		return localReslt;
 	}
 

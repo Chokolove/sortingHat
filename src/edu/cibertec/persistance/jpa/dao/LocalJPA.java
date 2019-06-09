@@ -11,7 +11,13 @@ public class LocalJPA extends GenericoJPA{
 	private static final long serialVersionUID = 1L;
 	
 	public Local get(Integer id) throws Exception{
+		
 		return em.find(Local.class, id);
+	}
+	public List<Local> getXDir(String dir) throws Exception{
+		TypedQuery<Local> query = em.createQuery("FROM Local where address like ?1",Local.class);
+		query.setParameter(1, "%"+dir+"%");
+		return query.getResultList();
 	}
 	public List<Local> getAll() throws Exception {
 		TypedQuery<Local> query = em.createQuery("FROM Local",Local.class);

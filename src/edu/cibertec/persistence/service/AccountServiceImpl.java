@@ -26,7 +26,7 @@ public class AccountServiceImpl implements IAccountService {
 		acc = accDAO.get(id);
 		accDAO.releaseEM();
 		
-		log.info("Se sale de getAccount()");
+		log.info("Saliendo de getAccount()");
 		
 		return acc;
 	}
@@ -42,7 +42,7 @@ public class AccountServiceImpl implements IAccountService {
 		accs= accDAO.getAll();
 		accDAO.releaseEM();
 		
-		log.info("Se sale de getAccounts()");
+		log.info("Saliendo de getAccounts()");
 		
 		return accs;
 	}

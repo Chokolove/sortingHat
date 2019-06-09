@@ -17,6 +17,11 @@ public class ReviewJPA extends GenericoJPA{
 		TypedQuery<Review> query = em.createQuery("FROM Review",Review.class);
 		return query.getResultList();
 	}
+	public List<Review> getAllXLoc(Integer id) throws Exception {
+		TypedQuery<Review> query = em.createQuery("FROM Review where local.id = ?1",Review.class);
+		query.setParameter(1, id);
+		return query.getResultList();
+	}
 	public void registrar(Review reviewJPA) throws Exception{
 		em.persist(reviewJPA);
 	}

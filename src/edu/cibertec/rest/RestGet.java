@@ -17,7 +17,6 @@ import edu.cibertec.dto.ProfileDTO;
 import edu.cibertec.dto.ReviewDTO;
 import edu.cibertec.entity.Account;
 import edu.cibertec.entity.Local;
-import edu.cibertec.model.ModelLocal;
 import edu.cibertec.persistence.service.AccountServiceImpl;
 import edu.cibertec.persistence.service.IAccountService;
 import edu.cibertec.persistence.service.LocalServiceImpl;

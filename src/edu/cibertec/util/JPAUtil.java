@@ -10,7 +10,7 @@ import edu.cibertec.persistence.service.AccountServiceImpl;
 public class JPAUtil {
 
 	private static final EntityManagerFactory emf;
-	static final Logger log = Logger.getLogger(AccountServiceImpl.class);
+	static final Logger log = Logger.getLogger(JPAUtil.class);
 	static{
 		
 		try{

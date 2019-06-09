@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import edu.cibertec.dto.AccountDTO;
 import edu.cibertec.dto.ProfileDTO;
-import edu.cibertec.model.ModelLocal;
 
 @Path("/post")
 public class RestPost {
