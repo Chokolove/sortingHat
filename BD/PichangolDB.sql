@@ -118,7 +118,7 @@ INSERT INTO `tb_review`(`account_id`, `local_id`, `stars`, `commentary`) VALUES 
 INSERT INTO `tb_review`(`account_id`, `local_id`, `stars`, `commentary`) VALUES (2,3,4,"Prueba texto 3");
 INSERT INTO `tb_review`(`account_id`, `local_id`, `stars`, `commentary`) VALUES (2,1,5,"Prueba texto 4");
 
-INSERT INTO `tb_profile`(`account_id`, `full_name`, `email`, `phone1`, `phone2`, `phone3`, `dni`, `created_at`, `updated_at`, `status`) VALUES (1,"Pepito Suarez","asd@asd.com",999,888,777,987,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
+INSERT INTO `tb_profile`(`account_id`, `full_name`, `phone1`, `phone2`, `phone3`, `dni`, `created_at`, `updated_at`, `status`) VALUES (1,"Pepito Suarez",999,888,777,987,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
 
 
 
