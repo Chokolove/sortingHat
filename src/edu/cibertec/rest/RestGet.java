@@ -17,6 +17,8 @@ import edu.cibertec.dto.ProfileDTO;
 import edu.cibertec.dto.ReviewDTO;
 import edu.cibertec.entity.Account;
 import edu.cibertec.entity.Local;
+import edu.cibertec.entity.Profile;
+import edu.cibertec.entity.Review;
 import edu.cibertec.persistence.service.AccountServiceImpl;
 import edu.cibertec.persistence.service.IAccountService;
 import edu.cibertec.persistence.service.LocalServiceImpl;
@@ -27,7 +29,7 @@ import edu.cibertec.util.Util;
 @Path("/get")
 public class RestGet {
 	
-	static final Logger log = Logger.getLogger(AccountServiceImpl.class);
+	static final Logger log = Logger.getLogger(RestGet.class);
 	
 	AccountServiceImpl accService = new AccountServiceImpl();
 	LocalServiceImpl locService = new LocalServiceImpl();
@@ -48,13 +50,10 @@ public class RestGet {
 			for(Local jpa:listJPA) {
 				listaLocales.add(Util.localJPAtoDTO(jpa));
 			}
+			log.info("Finaliza busqueda");
 		} catch (Exception e) {
-			log.error("No se pudo obtener lista");
-			e.printStackTrace();
+			log.fatal("Exception: ", e);
 		}
-		
-		
-
 		log.info("Saliendo de obtenerDatosLocales()");
 		return listaLocales;
 	}
@@ -72,11 +71,10 @@ public class RestGet {
 			for(Account acc:listaAccJPA) {
 				listaAccount.add(Util.accJPAtoDTO(acc));
 			}
+			log.info("Finaliza busqueda");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.fatal("Exception: ", e);
 		}
-		
 		log.info("Saliendo de obtenerDatosAccount()");
 		return listaAccount;
 	}
@@ -96,28 +94,35 @@ public class RestGet {
 			for(Local loc:listJPA) {
 				listaLocales.add(Util.localJPAtoDTO(loc));
 			}
-			log.info("Se econtro Registro");
-			return listaLocales;
+			log.info("Finaliza busquedao");
 			
 		} catch (Exception e) {
-			log.error("Algo salio mal al recuperar LocalesXdir");
-			e.printStackTrace();
+			log.fatal("Exception: ", e);
 		}
 		
 		log.info("salio obtenerdatoslocalxDesc()");
-		return null;
+		return listaLocales;
 	}
-	/*
+	
 	//http://localhost:8080/api-rest/get/obetenerResenasLocal/1
 	@GET
 	@Path("/obetenerResenasLocal/{p_id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ReviewDTO> obetenerRevIdLocal(@PathParam("p_id") int id) {
-		System.out.println("entro obetenerResenasLocal()");
+		log.info("entro obetenerResenasLocal()");
 		List<ReviewDTO> review = new ArrayList<ReviewDTO>();
-
-		review = revBl.ListaReviewIdLocal(id);
-
+		List<Review> rev = null;
+		try {
+			rev = revService.getReviewsXLoc(id);
+			for(Review revJpa:rev) {
+				review.add(Util.reviewJPAtoDTO(revJpa));
+			}
+			log.info("Finaliza busqueda");
+			return review;
+		} catch (Exception e) {
+			log.fatal("Exception: ", e);
+		}
+		log.info("salio obetenerResenasLocal()");
 		return review;
 	}
 
@@ -126,14 +131,21 @@ public class RestGet {
 	@Path("/obetenerProfileIdAcc/{p_id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ProfileDTO obetenerProfileIdAcc(@PathParam("p_id") int id) {
-		System.out.println("entro obetenerProfileIdAcc()");
+		log.info("entro obetenerProfileIdAcc()");
 		ProfileDTO profile = new ProfileDTO();
-		profile= profBL.profileIdLocal(id);
-
+		Profile profJPA = null;
+		try {
+			profJPA = profService.getProfile(id);
+			profile = Util.profileJPAtoDTO(profJPA);
+			log.info("Finaliza busqueda");
+		} catch (Exception e) {
+			log.fatal("Exception: ", e);
+		}
+		log.info("salio obetenerProfileIdAcc()");
 		return profile;
 	}
 
-*/
+
 
 
 

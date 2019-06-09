@@ -4,14 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 
+import org.apache.log4j.Logger;
+
 import edu.cibertec.util.JPAUtil;
 
 public abstract class GenericoJPA implements Serializable{
 	private static final long serialVersionUID = 1L;
 	protected EntityManager em;
-	
+	static final Logger log = Logger.getLogger(GenericoJPA.class);
 	public void createEM() {
-		System.out.println("Se captura el entityManager");
+		log.info("Se captura el entityManager");
 		em = JPAUtil.getEmf().createEntityManager();
 	}
 	public void releaseEM() {
@@ -20,7 +22,7 @@ public abstract class GenericoJPA implements Serializable{
 
 	public void beginTransaction() {
 		
-		System.out.println("em.getTransaction().begin();");
+		log.info("em.getTransaction().begin();");
 		em.getTransaction().begin();
 	}
 
