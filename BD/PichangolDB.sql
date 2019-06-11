@@ -120,6 +120,8 @@ INSERT INTO `tb_review`(`account_id`, `local_id`, `stars`, `commentary`) VALUES 
 
 INSERT INTO `tb_profile`(`account_id`, `full_name`, `phone1`, `phone2`, `phone3`, `dni`, `created_at`, `updated_at`, `status`) VALUES (1,"Pepito Suarez",999,888,777,987,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1);
 
+insert into tb_profile values (null,2,'Juan Alberto','993303222','999556454','977474112','77410022',default,default,1);
 
+INSERT INTO `tb_local`(`admin_id`, `name`,  `address`, `description`, `latitude`, `longitude`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES (2,"Polideportivo Contigo Peru","Av. Ernesto Diez Canseco 482","Polideportivo con canchas grandes de cesped artificial, incluye equipo deportivo.",-12.122294,-77.028323,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,1);
 
 
