@@ -65,14 +65,33 @@ public class ReviewServiceImpl implements IReviewService{
 
 	@Override
 	public Review actualizar(Review Review) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+log.info("Se ingreso a getReview()");
+		
+		revDAO.createEM();
+		revDAO.beginTransaction();
+		revDAO.actualizar(Review);
+		revDAO.flush();
+		revDAO.endTransaction();
+		
+		log.info("Saliendo de getReview()");
+		
+		return Review;
 	}
 
 	@Override
 	public void eliminar(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Review> getReviewsXAcc(int id) throws Exception {
+		log.info("Se ingreso a getReviewsXAcc()");
+		List<Review>revs = null;
+		revDAO.createEM();
+		revs = revDAO.getAllXAcc(id);
+		log.info("Saliendo de getReviewsXAcc()");
+		return revs;
 	}
 
 

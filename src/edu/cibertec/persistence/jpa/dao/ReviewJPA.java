@@ -22,6 +22,12 @@ public class ReviewJPA extends GenericoJPA{
 		query.setParameter(1, id);
 		return query.getResultList();
 	}
+	public List<Review> getAllXAcc(Integer id) throws Exception {
+		TypedQuery<Review> query = em.createQuery("FROM Review where account.id = ?1",Review.class);
+		query.setParameter(1, id);
+		return query.getResultList();
+	}
+	
 	public void registrar(Review reviewJPA) throws Exception{
 		em.persist(reviewJPA);
 	}
