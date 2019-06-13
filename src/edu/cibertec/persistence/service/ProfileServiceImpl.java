@@ -41,7 +41,7 @@ public class ProfileServiceImpl implements IProfileService {
 	}
 
 	@Override
-	public void registrar(Profile profile) throws Exception {
+	public Profile registrar(Profile profile) throws Exception {
 		
 		log.info("Se ingreso a registrar()");
 		
@@ -52,6 +52,7 @@ public class ProfileServiceImpl implements IProfileService {
 		profDAO.endTransaction();
 		
 		log.info("Saliendo de registrar()");
+		return profile;
 	}
 
 	@Override

@@ -48,10 +48,10 @@ public class AccountServiceImpl implements IAccountService {
 	}
 
 	@Override
-	public void registrar(Account account) throws Exception {
+	public Account registrar(Account account) throws Exception {
 		
 		log.info("Se ingreso a registrar()");
-		
+		Account acc = new Account();
 
 		try {
 
@@ -59,6 +59,7 @@ public class AccountServiceImpl implements IAccountService {
 			accDAO.beginTransaction();
 			accDAO.registrar(account);
 			accDAO.flush();
+			
 			accDAO.endTransaction();
 
 		} catch (Exception e) {
@@ -67,12 +68,13 @@ public class AccountServiceImpl implements IAccountService {
 			e.printStackTrace();
 		}
 		log.info("Cuenta Creada");
+		log.info("acc"+acc.getId());
+		return account;
 	}
 
 	@Override
 	public void actualizar(Account account) throws Exception {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public interface IAccountService {
 
 	public Account getAccount(Integer id) throws Exception;
 	public List<Account> getAccounts()	throws Exception;
-	public void registrar(Account account) throws Exception;
+	public Account registrar(Account account) throws Exception;
 	public void	actualizar(Account account) throws Exception;
 
 	public void eliminar(Integer id) throws Exception;

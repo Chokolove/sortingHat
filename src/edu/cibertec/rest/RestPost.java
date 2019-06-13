@@ -133,41 +133,10 @@ public class RestPost {
 		log.info("---Empieza insercion de Profile---");
 		
 		Profile profile = new Profile();
-		Account accProf = new Account();
 		
-		log.info("---Empieza Captura de Account: "+ usu.getEmail());
-
-		try {
-			listaAccJPA = accService.getAccounts();
-			for(Account acc:listaAccJPA) {
-				
-				if(usu.getEmail().equals(acc.getEmail())) {
-					
-					accProf.setId(acc.getId());
-					accProf.setEmail(acc.getEmail());
-					accProf.setPassword(acc.getPassword());
-					accProf.setAccType(acc.getAccType());
-					accProf.setStatus(acc.getStatus());
-					log.info("---Se encontro Account: "+usu.getEmail());
-					
-				} else {
-					log.info("---No se encontro Account");
-					json.addProperty("profile", "");
-					json.addProperty("message", "No se encontro Account");
-					json.addProperty("response", false);
-
-					result = json.toString();
-					return result;
-				}
-			}
-			log.info("---Finaliza busqueda cuentas---");
-		} catch (Exception e) {
-			log.fatal("Exception: ", e);
-		}
 		
-		log.info("---Finaliza Captura de Account: "+ usu.getEmail());
 		
-		profile.setAccount(accProf);
+		profile.setAccount(account);
 		profile.setFullName(usu.getFullName());
 		profile.setPhone1(usu.getPhone1());
 		profile.setPhone2(usu.getPhone2());
@@ -187,35 +156,7 @@ public class RestPost {
 		log.info("---Empieza creacion de Respuesta---");
 		
 		JsonElement profileDTO = null;
-		
-		log.info("---Empieza captura de Profiel: "+profile.getAccount().getEmail());
-
-		List<Profile> profiles = null;
-		try {
-			profiles = profService.getProfiles();
-			for(Profile pr:profiles) {
-				if(profile.getAccount().getEmail().equals(pr.getAccount().getEmail())) {
-					log.info("Se encontro Profile: "+pr.getFullName());
-					profileDTO = new Gson().toJsonTree(Util.profileJPAtoDTO(pr));
-					
-				}else {
-					log.info("---No se encontro Profile");
-					json.addProperty("profile", "");
-					json.addProperty("message", "No se encontro Profile");
-					json.addProperty("response", false);
-
-					result = json.toString();
-					return result;
-				}
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.fatal("Exception: ", e);
-		}
-		
-		
-		log.info("---Finaliza captura de Profiel: "+profile.getAccount().getEmail());
+		profileDTO =  new Gson().toJsonTree(Util.profileJPAtoDTO(profile));
 		
 		json.add("profile",profileDTO);
 		json.addProperty("message", "");
@@ -227,7 +168,7 @@ public class RestPost {
 		log.info("---Finaliza creacion de Respuesta---");
 
 		log.info("salio POST: signUp()");
-		return null;
+		return result;
 	}
 
 
