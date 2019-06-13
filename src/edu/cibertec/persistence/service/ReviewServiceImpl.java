@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import edu.cibertec.entity.Review;
-import edu.cibertec.persistance.jpa.dao.ReviewJPA;
+import edu.cibertec.persistence.jpa.dao.ReviewJPA;
 
 public class ReviewServiceImpl implements IReviewService{
 	

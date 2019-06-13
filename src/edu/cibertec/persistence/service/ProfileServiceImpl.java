@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import edu.cibertec.entity.Profile;
-import edu.cibertec.persistance.jpa.dao.ProfileJPA;
+import edu.cibertec.persistence.jpa.dao.ProfileJPA;
 
 public class ProfileServiceImpl implements IProfileService {
 	

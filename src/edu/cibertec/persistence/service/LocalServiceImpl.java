@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import edu.cibertec.entity.Local;
-import edu.cibertec.persistance.jpa.dao.LocalJPA;
+import edu.cibertec.persistence.jpa.dao.LocalJPA;
 
 public class LocalServiceImpl implements ILocalService{
 

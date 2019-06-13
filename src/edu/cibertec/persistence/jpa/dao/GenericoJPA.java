@@ -1,4 +1,4 @@
-package edu.cibertec.persistance.jpa.dao;
+package edu.cibertec.persistence.jpa.dao;
 
 import java.io.Serializable;
 

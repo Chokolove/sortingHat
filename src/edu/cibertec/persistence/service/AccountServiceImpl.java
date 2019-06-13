@@ -7,7 +7,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.spi.LoggerFactory;
 
 import edu.cibertec.entity.Account;
-import edu.cibertec.persistance.jpa.dao.AccountJPA;
+import edu.cibertec.persistence.jpa.dao.AccountJPA;
 
 public class AccountServiceImpl implements IAccountService {
 	
@@ -51,18 +51,8 @@ public class AccountServiceImpl implements IAccountService {
 	public void registrar(Account account) throws Exception {
 		
 		log.info("Se ingreso a registrar()");
-		List<Account>accs= null;
+		
 
-		accDAO.createEM();
-		accs= accDAO.getAll();
-		for(Account acc:accs) {
-			if(acc.getEmail().equals(account.getEmail())) {
-				log.error("Cuenta ya existe");
-				throw new Exception();
-			}	
-		}
-		
-		
 		try {
 
 			accDAO.createEM();
@@ -76,7 +66,6 @@ public class AccountServiceImpl implements IAccountService {
 			accDAO.rollbackTransaction();
 			e.printStackTrace();
 		}
-		accDAO.releaseEM();
 		log.info("Cuenta Creada");
 	}
 
