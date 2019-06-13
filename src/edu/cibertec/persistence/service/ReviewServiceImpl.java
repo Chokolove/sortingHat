@@ -48,7 +48,7 @@ public class ReviewServiceImpl implements IReviewService{
 		return revs;
 	}
 	@Override
-	public void registrar(Review Review) throws Exception {
+	public Review registrar(Review Review) throws Exception {
 		log.info("Se ingreso a getReview()");
 		
 		revDAO.createEM();
@@ -59,12 +59,14 @@ public class ReviewServiceImpl implements IReviewService{
 		
 		log.info("Saliendo de getReview()");
 		
+		return Review;
+		
 	}
 
 	@Override
-	public void actualizar(Review Review) throws Exception {
+	public Review actualizar(Review Review) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override

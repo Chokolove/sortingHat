@@ -17,11 +17,17 @@ import com.google.gson.JsonObject;
 
 import edu.cibertec.dto.LoginDTO;
 import edu.cibertec.dto.ProfileDTO;
+import edu.cibertec.dto.ReviewDTO;
+import edu.cibertec.dto.ReviewInsert;
 import edu.cibertec.dto.UsuarioDTO;
 import edu.cibertec.entity.Account;
+import edu.cibertec.entity.Local;
 import edu.cibertec.entity.Profile;
+import edu.cibertec.entity.Review;
 import edu.cibertec.persistence.service.AccountServiceImpl;
+import edu.cibertec.persistence.service.LocalServiceImpl;
 import edu.cibertec.persistence.service.ProfileServiceImpl;
+import edu.cibertec.persistence.service.ReviewServiceImpl;
 import edu.cibertec.util.Util;
 
 @Path("/post")
@@ -29,7 +35,8 @@ public class RestPost {
 
 	AccountServiceImpl accService = new AccountServiceImpl();
 	ProfileServiceImpl profService = new ProfileServiceImpl();
-
+	ReviewServiceImpl revService = new ReviewServiceImpl();
+	LocalServiceImpl locService = new LocalServiceImpl();
 
 	static final Logger log = Logger.getLogger(RestPost.class);
 
@@ -101,7 +108,6 @@ public class RestPost {
 				for(Account acc:listaAccJPA) {
 					if(usu.getEmail().equals(acc.getEmail())) {
 
-						json.addProperty("profile", "");
 						json.addProperty("message", "El email ingresado ya se encuentra registrado");
 						json.addProperty("response", false);
 						log.error("El email ingresado ya se encuentra registrado");
@@ -109,7 +115,12 @@ public class RestPost {
 						return result;
 					}
 				}
-				log.info("Finaliza busqueda cuentas");
+				
+				json.addProperty("message", "Email Disponible");
+				json.addProperty("response", true);
+				log.error("El email disponible");
+				
+				log.info("---Finaliza busqueda cuentas---");
 			} catch (Exception e) {
 				log.fatal("Exception: ", e);
 			}
@@ -206,5 +217,56 @@ public class RestPost {
 		return result;
 	}
 
+	//http://localhost:8080/api-rest/post/postReview/
+		@POST
+		@Path("/postReview")
+		@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+		@Produces(MediaType.APPLICATION_JSON)
+		public String postReview( ReviewInsert rev) {
+			log.info("entro POST: postReview()");
+			
+			JsonObject json = new JsonObject();
+			String result = "";
+			Review revJPA = new Review();
+			
+			List<Account> listAcc = null;
+			List<Local> listLoc = null;
+			
+			try {
+				listAcc = accService.getAccounts();
+				listLoc = locService.getLocals();
+				
+				for(Account acc:listAcc) {
+					if(rev.getAccount_id()==acc.getId()) {
+						revJPA.setAccount(acc);
+					}
+				}
+				
+				for(Local loc:listLoc) {
+					if(rev.getLocal_id()==loc.getId()) {
+						revJPA.setLocal(loc);
+					}
+				}
+				
+				revJPA.setStars(rev.getStars());
+				revJPA.setCommentary(rev.getCommentary());
+				
+				revService.registrar(revJPA);
+				
+			} catch (Exception e) {
+				log.fatal("Exception: ", e);
+			}
+			
+			
+			json.addProperty("message", "");
+			json.addProperty("response", true);
+
+			result = json.toString();
+			
+			
+
+			log.info("salio POST: postReview()");
+			return result;
+		}
 
 }

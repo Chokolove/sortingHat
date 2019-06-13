@@ -10,7 +10,7 @@ public interface IProfileService {
 	public Profile getProfileXAcc(Integer id) throws Exception;
 	public List<Profile> getProfiles()	throws Exception;
 	public Profile registrar(Profile profile) throws Exception;
-	public void	actualizar(Profile profile) throws Exception;
+	public Profile	actualizar(Profile profile) throws Exception;
 
 	public void eliminar(Integer id) throws Exception;
 }

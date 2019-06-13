@@ -73,8 +73,9 @@ public class AccountServiceImpl implements IAccountService {
 	}
 
 	@Override
-	public void actualizar(Account account) throws Exception {
+	public Account actualizar(Account account) throws Exception {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

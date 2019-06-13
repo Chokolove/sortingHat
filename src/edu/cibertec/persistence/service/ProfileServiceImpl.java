@@ -56,9 +56,9 @@ public class ProfileServiceImpl implements IProfileService {
 	}
 
 	@Override
-	public void actualizar(Profile profile) throws Exception {
+	public Profile actualizar(Profile profile) throws Exception {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
