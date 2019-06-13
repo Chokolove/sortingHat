@@ -52,7 +52,7 @@ public class RestPost {
 				if(login.getEmail().equals(acc.getEmail()) && login.getPassword().equals(acc.getPassword())) {
 
 
-					jpa = profService.getProfile(acc.getId());
+					jpa = profService.getProfileXAcc(acc.getId());
 					dto = Util.profileJPAtoDTO(jpa);
 
 					profileDTO= new Gson().toJsonTree(dto);
@@ -81,6 +81,41 @@ public class RestPost {
 		log.info("Saliendo a POST: validarLogin()");
 		return result;
 	}
+	
+	//http://localhost:8080/api-rest/post/validacionEmail/
+		@POST
+		@Path("/validacionEmail")
+		@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+		@Produces(MediaType.APPLICATION_JSON)
+		public String validacionEmail( UsuarioDTO usu) {
+			log.info("Entrando a POST: validarLogin()");
+			
+			JsonObject json = new JsonObject();
+			String result = "";
+			
+			log.info("---Inicia validacion de Correo---");
+			
+			List<Account> listaAccJPA = new ArrayList<Account>();
+			try {
+				listaAccJPA = accService.getAccounts();
+				for(Account acc:listaAccJPA) {
+					if(usu.getEmail().equals(acc.getEmail())) {
+
+						json.addProperty("profile", "");
+						json.addProperty("message", "El email ingresado ya se encuentra registrado");
+						json.addProperty("response", false);
+						log.error("El email ingresado ya se encuentra registrado");
+						result = json.toString();
+						return result;
+					}
+				}
+				log.info("Finaliza busqueda cuentas");
+			} catch (Exception e) {
+				log.fatal("Exception: ", e);
+			}
+			log.info("---Finaliza validacion de Correo---");
+			return result;
+		}
 
 	//http://localhost:8080/api-rest/post/signUp/
 	@POST

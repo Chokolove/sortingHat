@@ -7,6 +7,7 @@ import edu.cibertec.entity.Profile;
 public interface IProfileService {
 	
 	public Profile getProfile(Integer id) throws Exception;
+	public Profile getProfileXAcc(Integer id) throws Exception;
 	public List<Profile> getProfiles()	throws Exception;
 	public Profile registrar(Profile profile) throws Exception;
 	public void	actualizar(Profile profile) throws Exception;

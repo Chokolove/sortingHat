@@ -12,6 +12,11 @@ public class ProfileJPA extends GenericoJPA{
 	public Profile get(Integer id) throws Exception{
 		return em.find(Profile.class, id);
 	}
+	public Profile getXAcc(Integer id) throws Exception {
+		TypedQuery<Profile> query = em.createQuery("FROM Profile where account.id = ?1",Profile.class);
+		query.setParameter(1,id);
+		return query.getSingleResult();
+	}
 	public List<Profile> getAll() throws Exception {
 		TypedQuery<Profile> query = em.createQuery("FROM Profile",Profile.class);
 		return query.getResultList();
