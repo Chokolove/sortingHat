@@ -10,49 +10,49 @@ public class Character {
 	
 	@Id
 	private int id;
-	private String houseName;
-	private String members;
-	private String founder;
-	private String description;
-	private String imageHouse;
-	
-	
+	private String nameCharacter;
+	private String ageCharacter;
+	private String imageCharacter;
+	private String nameFather;
+	private String nameMother;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getHouseName() {
-		return houseName;
+	public String getNameCharacter() {
+		return nameCharacter;
 	}
-	public void setHouseName(String houseName) {
-		this.houseName = houseName;
+	public void setNameCharacter(String nameCharacter) {
+		this.nameCharacter = nameCharacter;
 	}
-	public String getMembers() {
-		return members;
+	public String getAgeCharacter() {
+		return ageCharacter;
 	}
-	public void setMembers(String members) {
-		this.members = members;
+	public void setAgeCharacter(String ageCharacter) {
+		this.ageCharacter = ageCharacter;
 	}
-	public String getFounder() {
-		return founder;
+	public String getImageCharacter() {
+		return imageCharacter;
 	}
-	public void setFounder(String founder) {
-		this.founder = founder;
+	public void setImageCharacter(String imageCharacter) {
+		this.imageCharacter = imageCharacter;
 	}
-	public String getDescription() {
-		return description;
+	public String getNameFather() {
+		return nameFather;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setNameFather(String nameFather) {
+		this.nameFather = nameFather;
 	}
-	public String getImageHouse() {
-		return imageHouse;
+	public String getNameMother() {
+		return nameMother;
 	}
-	public void setImageHouse(String imageHouse) {
-		this.imageHouse = imageHouse;
+	public void setNameMother(String nameMother) {
+		this.nameMother = nameMother;
 	}
+	
+	
 	
 	
 }
