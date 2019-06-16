@@ -7,14 +7,12 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- Entidades (Clases) -->
 		
-		<class>edu.cibertec.entity.Local</class>
-		<class>edu.cibertec.entity.Account</class>
-		<class>edu.cibertec.entity.Profile</class>
-		<class>edu.cibertec.entity.Review</class>
+		<class>edu.cibertec.entity.Character</class>
+		<class>edu.cibertec.entity.House</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pichangol" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sortinghat" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<!-- Dialecto MySql -->

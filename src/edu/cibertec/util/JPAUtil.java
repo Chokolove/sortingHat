@@ -5,7 +5,6 @@ import javax.persistence.Persistence;
 
 import org.apache.log4j.Logger;
 
-import edu.cibertec.persistence.service.AccountServiceImpl;
 
 public class JPAUtil {
 
