@@ -17,6 +17,11 @@ public class CharacterJPA extends GenericoJPA{
 	public List<Character> getAll() throws Exception {
 		TypedQuery<Character> query = em.createQuery("FROM Character",Character.class);
 		return query.getResultList();
+		
+	}public List<Character> getAllxHouse(int id) throws Exception {
+		TypedQuery<Character> query = em.createQuery("FROM Character where house.id =?1",Character.class);
+		query.setParameter(1, id);
+		return query.getResultList();
 	}
 	public void registrar(Character CharacterJPA) throws Exception{
 		em.persist(CharacterJPA);

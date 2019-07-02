@@ -33,7 +33,19 @@ public class CharacterServiceImpl implements ICharacterService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public List<Character> getCharactersXHouse(Integer id) throws Exception {
+		log.info("Se ingreso a getCharactersXHouse()");
+		List<Character> characters = null;
 
+		characterJPA.createEM();
+		characters = characterJPA.getAllxHouse(id);
+		characterJPA.releaseEM();
+
+		log.info("Saliendo de getCharactersXHouse()");
+		
+		return characters;
+	}
 	@Override
 	public void registrar(Character Character) throws Exception {
 		// TODO Auto-generated method stub

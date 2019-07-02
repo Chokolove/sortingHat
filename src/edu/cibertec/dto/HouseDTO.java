@@ -1,26 +1,11 @@
-package edu.cibertec.entity;
+package edu.cibertec.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "tb_houses")
-public class House {
-	
-	@Id
+public class HouseDTO {
 	private int id;
 	private String houseName;
 	private String founder;
 	private String description;
 	private String imageHouse;
-	@OneToMany(mappedBy="house", cascade= CascadeType.PERSIST)
-	private Collection<Character> characters = new ArrayList<Character>();
 	public int getId() {
 		return id;
 	}

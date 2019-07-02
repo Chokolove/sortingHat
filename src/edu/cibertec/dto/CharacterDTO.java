@@ -1,25 +1,18 @@
-package edu.cibertec.entity;
+package edu.cibertec.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "tb_character")
-public class Character {
-	
-	@Id
+import edu.cibertec.entity.House;
+
+public class CharacterDTO {
 	private int id;
 	private String nameCharacter;
 	private String ageCharacter;
 	private String imageCharacter;
 	private String nameFather;
 	private String nameMother;
-	@ManyToOne
-	@JoinColumn(name="houseID")
-	private House house;
+	private HouseDTO houseDTO;
 	public int getId() {
 		return id;
 	}
@@ -56,14 +49,11 @@ public class Character {
 	public void setNameMother(String nameMother) {
 		this.nameMother = nameMother;
 	}
-	public House getHouse() {
-		return house;
+	public HouseDTO getHouseDTO() {
+		return houseDTO;
 	}
-	public void setHouse(House house) {
-		this.house = house;
+	public void setHouseDTO(HouseDTO houseDTO) {
+		this.houseDTO = houseDTO;
 	}
-	
-	
-	
 	
 }
